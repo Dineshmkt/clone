@@ -341,8 +341,7 @@ const formatTime = (seconds: number) => {
           secured by 
           <span className="ml-2 font-bold text-blue-600 flex items-center">
             <div className="w-2 h-2 bg-blue-600 rounded-full mr-1"></div>
-            JUSPAY
-          </span>
+            JusPay     </span>
         </div>
       </div>
     </div>

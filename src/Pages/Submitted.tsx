@@ -21,7 +21,7 @@ const Submitted = () => {
   const handleBack = () => {
     navigate("/");
   }
-  console.log(value)
+
 
   return (
     <div>
