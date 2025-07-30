@@ -33,8 +33,7 @@ const Value = () => {
   const handleSubmit = () => {
     console.log("register succesfull")
     if (!name.trim() || !email.trim()) return console.log("name and email are required")
-     setValue({name,email})
-    //  setValue((prev)=>({...prev,name:"",email:""})) 
+     setValue({name,email}) 
     dispatch(updateLogin(value))
   }
 
