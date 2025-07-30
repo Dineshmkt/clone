@@ -11,7 +11,7 @@ const Address = () => {
 
   return (
     <div className="p-4 relative">
-      <h2 className="text-xl font-semibold mb-4">All Saved Addresses</h2>
+      <h2 className="text-xl font-semibold mb-4">All Saved Address</h2>
       <button className="absolute bottom-24 right-28 bg-rose-500 text-white px-4 py-2 rounded-md float-right mb-4">Add New Address</button>
 
       <div className="border-t pt-4">

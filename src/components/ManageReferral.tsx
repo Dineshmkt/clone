@@ -19,7 +19,7 @@ const ManageReferral = () => {
              After your friend places their first order,{" "}
             <strong>you get 25% off</strong> up to ₹200 on your next order
           </li>
-          <li> Upon 10 successful referrals, <strong>you earn ₹2000</strong></li>
+          <li> Upon 10 successful referrals, <strong>you earn ₹200</strong></li>
         </ul>
 
         

@@ -21,7 +21,7 @@ const FaqList = () => {
       <div className="divide-y divide-gray-200 border-t border-b">
         {faqs.map((item, index) => (
           <div
-            key={index}
+           key={index}
             className="flex items-center justify-between py-4 cursor-pointer hover:bg-gray-50"
           >
             <span className="text-sm font-medium text-gray-800">{item}</span>

@@ -134,7 +134,7 @@ const Login = ({setShowLogin,setLoginModel}:Props) => {
                 <p className="text-sm text-center mt-4">
                   By continuing, you agree to our<br />
                   <span className="text-pink-300 underline cursor-pointer">Terms of Service</span> &nbsp;
-                  <span className="text-pink-300 underline cursor-pointer">Privacy Policy</span>
+                  <span className="text-pink-300 underline cursor-pointer">privacy policy</span>
                 </p>
               </div>
 
