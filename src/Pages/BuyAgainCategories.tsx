@@ -2,10 +2,11 @@ import  { useState } from 'react';
 
 import { DummyData } from "../data/DummyData";
 import ProductGrid from "./ProductGrid";
+type CategoryKey = keyof typeof DummyData;
 
 const BuyAgainCategories = () => {
   const [activeCategory, setActiveCategory] = useState(1);
-   const [selectedCategory, setSelectedCategory] = useState("AllItems");
+   const [selectedCategory, setSelectedCategory] = useState<CategoryKey>("AllItems");
    const productsToShow = DummyData[selectedCategory] || [];
 
   const categories = [
@@ -19,7 +20,7 @@ const BuyAgainCategories = () => {
     { id: 8, title: "Elevate", image: "https://cdn.zeptonow.com/production/tr:w-72,ar-144-144,pr-true,f-auto,q-80/inventory/banner/2408de5e-a5c2-4eb2-8db9-336c42443a89.png" }
   ];
 
-  const handleCategoryClick = (categoryId) => {
+  const handleCategoryClick = (categoryId:any) => {
     setActiveCategory(categoryId);
   };
 
@@ -44,7 +45,9 @@ const BuyAgainCategories = () => {
           >
          
             <div
-             onClick={()=>setSelectedCategory(category.title)}
+            //  onClick={()=>setSelectedCategory(category.title)}
+            onClick={()=>setSelectedCategory(category.title as CategoryKey)}
+
               className={`w-16 h-16 gap-4 rounded-2xl flex items-center justify-center mb-2 transition-all duration-200 ${
                 activeCategory === category.id
                   ? 'bg-purple-100 border-2 border-purple-500'

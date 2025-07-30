@@ -4,8 +4,18 @@ import { SectionData } from "../data/SectionData";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-const fetchProduct = async () => {
-  return new Promise<typeof SectionData>((resolve) => {
+type SectionDataType = typeof SectionData;
+
+
+type Suggestion = {
+  type: 'product' | 'category' | 'history';
+  text: string;
+  image?: string;
+  category?: string;
+};
+
+const fetchProduct = async (): Promise<SectionDataType> => {
+  return new Promise((resolve) => {
     setTimeout(() => resolve(SectionData), 500);
   });
 };
@@ -56,18 +66,18 @@ const SearchItems = () => {
   if (isLoading) return <div className="text-center mt-10">Loading...</div>;
   if (isError) return <div className="text-center mt-10 text-red-500">Error fetching product.</div>;
 
-  // Generate suggestions based on search input
-  const getSuggestions = () => {
+
+  const getSuggestions = (): Suggestion[] => {
     if (!search.trim()) return searchHistory.slice(0, 5).map(item => ({ type: 'history', text: item }))
     
-    const suggestions: Array<{ type: 'product' | 'category' | 'history', text: string, image?: string, category?: string }> = []
+    const suggestions: Suggestion[] = []
     const addedItems = new Set<string>()
     
    
     data?.forEach(item => {
       const searchTerm = search.toLowerCase()
       
-      // Check if product name matches (with null checks)
+      
       if (item.name && item.name.toLowerCase().includes(searchTerm) && !addedItems.has(item.name)) {
         suggestions.push({
           type: 'product',
@@ -78,7 +88,7 @@ const SearchItems = () => {
         addedItems.add(item.name)
       }
       
-      // Check if product title matches 
+      
       if (item.title && item.title.toLowerCase().includes(searchTerm) && !addedItems.has(item.title)) {
         suggestions.push({
           type: 'product',
@@ -89,7 +99,7 @@ const SearchItems = () => {
         addedItems.add(item.title)
       }
       
-      // Check if category matches (with null checks)
+    
       if (item.category && item.category.toLowerCase().includes(searchTerm) && !addedItems.has(item.category)) {
         suggestions.push({
           type: 'category',
@@ -119,7 +129,8 @@ const SearchItems = () => {
     navigate(`/Section/${id}`);
   };
 
-  const handleSuggestionClick = (suggestion: { type: string, text: string }) => {
+
+  const handleSuggestionClick = (suggestion: Suggestion) => {
     setSearch(suggestion.text)
     setDebouncedSearch(suggestion.text)
     setShowSuggestions(false)
@@ -181,14 +192,13 @@ const SearchItems = () => {
     setTimeout(() => setShowSuggestions(false), 200)
   }
 
-  const handleRecentSearchClick = (searchTerm) => {
-  setSearch(searchTerm);
- 
-};
+  const handleRecentSearchClick = (searchTerm: string) => {
+    setSearch(searchTerm);
+  };
 
-const handleRemoveSearch = (indexToRemove) => {
-  setValue(prev => prev.filter((_, index) => index !== indexToRemove));
-};
+  const handleRemoveSearch = (indexToRemove: number) => {
+    setValue(prev => prev.filter((_, index) => index !== indexToRemove));
+  };
 
   return (
     <>
@@ -275,7 +285,7 @@ const handleRemoveSearch = (indexToRemove) => {
                         ) : (
                           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                             <svg className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
                             </svg>
                           </div>
                         )}
@@ -304,7 +314,7 @@ const handleRemoveSearch = (indexToRemove) => {
                   </button>
                 ))}
                 
-                {/* Show all results option */}
+                 {/* Show all results option  */}
                 {search.trim() && (
                   <button
                     onClick={() => {
@@ -401,7 +411,7 @@ const handleRemoveSearch = (indexToRemove) => {
          
         {filteredData.length > 0 ? (
           filteredData.map((item) => {
-            const discount = item.originalPrice - item.offerPrice;
+            const discount =Number(item.originalPrice)  - Number(item.offerPrice);
             return (
               
               <div

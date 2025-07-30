@@ -241,7 +241,7 @@ const formatTime = (seconds: number) => {
                                             type="text"
                                             placeholder="Enter Card Number"
                                             value={cardNumber}
-                                            onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
+                                              onChange={(e) => setCardNumber(e.target.value)} 
                                             maxLength={19}
                                             className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition-colors pr-12"
                                         />
@@ -261,7 +261,7 @@ const formatTime = (seconds: number) => {
                                             type="text"
                                             placeholder="MM/YY"
                                             value={expiryDate}
-                                            onChange={(e) => setExpiryDate(formatExpiryDate(e.target.value))}
+                                              onChange={(e) => setExpiryDate(e.target.value)}
                                             maxLength={5}
                                             className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition-colors"
                                         />
@@ -347,5 +347,6 @@ const formatTime = (seconds: number) => {
     </div>
   );
 };
+
 
 export default Payment;

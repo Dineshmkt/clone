@@ -26,7 +26,7 @@ const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({ number, onS
     }
   }, [timer]);
 
-  const handleOtpChange = (index, value) => {
+  const handleOtpChange = (index:any, value:any) => {
     if (value.length <= 1 && /^\d*$/.test(value)) {
       const newOtp = [...otp];
       newOtp[index] = value;
@@ -39,7 +39,7 @@ const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({ number, onS
     }
   };
 
-  const handleKeyDown = (index, e) => {
+  const handleKeyDown = (index:any, e:any) => {
     if (e.key === 'Backspace' && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
       if (prevInput) prevInput.focus();
@@ -59,7 +59,7 @@ const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({ number, onS
     alert("OTP has been resent to your mobile number");
   };
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds:any) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -98,7 +98,7 @@ const OTPVerificationModal: React.FC<OTPVerificationModalProps> = ({ number, onS
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 className="w-12 h-12 bg-white text-purple-800 rounded-full text-center text-lg font-bold focus:outline-none focus:ring-2 focus:ring-purple-300 border-2 border-purple-200"
-                maxLength="1"
+                maxLength={1}
               />
             ))}
           </div>

@@ -21,8 +21,6 @@ const Submitted = () => {
   const handleBack = () => {
     navigate("/");
   }
-
-
   return (
     <div>
       <div className="p-6 max-w-3xl mx-auto bg-white rounded shadow">
@@ -36,10 +34,10 @@ const Submitted = () => {
         </div>
 
         <ul className="border-b pb-2 divide-y">
-         {value.map((item, index) => (
+         {value.map((item, index)=> (
        <li key={index} className="flex justify-between py-2">
-            <span>{item.title} ({item.weight})</span>
-              <span>₹{item.originalPrice}</span>
+              <span>{item.title}  </span>
+              <span>₹{selector}</span>
     </li>
   ))}
  </ul>
@@ -62,6 +60,7 @@ const Submitted = () => {
     </div>
   );
 }
-
+//{item.originalPrice}
+//({item.weight})-42 after title
 export default Submitted;
 

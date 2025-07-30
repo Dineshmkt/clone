@@ -6,8 +6,13 @@ type Product = {
   image: string;
   title: string;
   name: string;
-  price: number;
+
   rating: number;
+  originalPrice:number;
+  offerPrice:number;
+  weight:string;
+  time:string;
+  reviews:number;
 };
 
 type Props = {
@@ -41,9 +46,7 @@ const ProductGrid = ({ products }: Props) => {
               alt={item.name}
               className="h-28 w-full object-contain"
             />
-            {/* <button className="absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 text-sm font-semibold border border-[#d4006a] text-[#d4006a] rounded hover:bg-[#fff0f7] transition">
-              ADD
-            </button> */}
+          
             <button onClick={()=>handleView(item.id)} className="text-[#d4006a] border border-[#d4006a] rounded-md px-4 py-1 text-sm font-semibold hover:bg-[#fff0f7] transition">
              view
            </button>
@@ -61,7 +64,7 @@ const ProductGrid = ({ products }: Props) => {
                   ₹{item.originalPrice}
                 </span>
                 <span className="text-green-600 text-xs font-semibold">
-                  ₹{discount} Off
+                  ₹{discount}  Off
                 </span>
               </>
             )}

@@ -34,7 +34,7 @@ const FetchProductList: React.FC = () => {
     return <div className="text-center mt-10 text-gray-500">Product not found.</div>;
   }
  
-  const handleDispatch=(product)=>{
+  const handleDispatch=(product:any)=>{
     console.log(product)
     dispatch(AddProduct(product))
     toast.success(`${product.name} added to cart!`);
@@ -93,7 +93,7 @@ const FetchProductList: React.FC = () => {
         ₹{product.originalPrice || 1699}
       </span>
       <span className="text-green-600 text-lg font-medium">
-        {product.discountPercent || 51}% Off
+        51% Off
       </span>
       <div className="bg-gray-200 text-gray-600 px-2 py-1 rounded text-sm font-medium ml-auto">
         SUPER SAVER

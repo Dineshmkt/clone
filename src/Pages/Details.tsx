@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   setShowProfile: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+
 const Details = ({setShowProfile}:Props) => {
   const navigate= useNavigate()
   const dispatch = useDispatch();
@@ -19,18 +21,17 @@ const Details = ({setShowProfile}:Props) => {
   useEffect(() => {
     console.log("page loaded");
   }, []);
-
+ console.log("payment",setPayment)
   const totalQuantity = selector.reduce((total, item) => total + item.quantity, 0);
 
 const totalPrice = selector.reduce(
   (total, item) => {
-    const price = Number(item.price) || Number(item.originalPrice) || 0;
+   
+    const price = Number((item as { originalPrice?: number }).originalPrice) || 0;
     return total + (item.quantity || 0) * price;
   },
   0
 );
-
-
 
 const handleClick=()=>{
   console.log("show porfile")
@@ -160,10 +161,11 @@ const handleClick=()=>{
         </button>
       </div>
     </div>
-     {payment && <Payment totalPrice={totalPrice}/>} 
+     {payment && <Payment />} 
     </>
   );
 };
+
 
 export default Details;
 
